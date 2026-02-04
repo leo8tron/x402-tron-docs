@@ -18,6 +18,8 @@ module.exports = {
   themeConfig: {
     image: 'img/twitter_card_bg.jpg',
     prism: {
+      theme: require('prism-react-renderer/themes/github'),
+      darkTheme: require('prism-react-renderer/themes/dracula'),
       additionalLanguages: ['solidity', 'python', 'bash'],
     },
     navbar: {

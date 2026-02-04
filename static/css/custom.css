@@ -113,12 +113,42 @@ body {
   font-family: 'Poppins';
 }
 
-html[data-theme='dark'] .markdown a {
+html[data-theme='dark'] .markdown a,
+html[data-theme='dark'] .theme-doc-markdown a {
   color: #bfabff;
 }
 
-html[data-theme='light'] .markdown a {
+html[data-theme='light'] .markdown a,
+html[data-theme='light'] .theme-doc-markdown a {
   color: #6400ff;
+}
+
+html[data-theme='dark'] .markdown a:hover,
+html[data-theme='dark'] .theme-doc-markdown a:hover,
+html[data-theme='light'] .markdown a:hover,
+html[data-theme='light'] .theme-doc-markdown a:hover {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+html[data-theme='light'] .tabs__item {
+  color: var(--ifm-color-emphasis-600);
+  border-bottom: 3px solid transparent;
+}
+
+html[data-theme='light'] .tabs__item--active {
+  color: var(--ifm-color-emphasis-900);
+  border-bottom-color: #6400ff;
+}
+
+html[data-theme='dark'] .tabs__item {
+  color: var(--ifm-color-emphasis-600);
+  border-bottom: 3px solid transparent;
+}
+
+html[data-theme='dark'] .tabs__item--active {
+  color: var(--ifm-color-emphasis-0);
+  border-bottom-color: #bfabff;
 }
 
 .blog {

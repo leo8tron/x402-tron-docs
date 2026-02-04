@@ -21,18 +21,18 @@ Before you begin, ensure you have:
 
 <Tabs>
   <TabItem value="python" label="Python (FastAPI)">
-    Install the x402-tron Python package with FastAPI support:
+Install the x402-tron Python package with FastAPI support:
 
-    ```bash
-    pip install x402-tron[fastapi]
-    ```
+```bash
+pip install x402-tron[fastapi]
+```
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
-    Install the x402-tron TypeScript package:
+Install the x402-tron TypeScript package:
 
-    ```bash
-    npm install @open-aibank/x402-tron tronweb
-    ```
+```bash
+npm install @open-aibank/x402-tron tronweb
+```
   </TabItem>
 </Tabs>
 
@@ -46,7 +46,7 @@ Integrate the payment middleware into your application. You will need to provide
 
 <Tabs>
   <TabItem value="python" label="Python (FastAPI)">
-    Full example in the demo repo [here](https://github.com/open-aibank/x402-tron-demo/tree/main/python/server).
+Full example in the demo repo [here](https://github.com/open-aibank/x402-tron-demo/tree/main/python/server).
 
 ```python
 import os

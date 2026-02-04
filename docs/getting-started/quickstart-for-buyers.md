@@ -21,18 +21,18 @@ We have pre-configured [examples available in the demo repo](https://github.com/
 
 <Tabs>
   <TabItem value="python" label="Python">
-    Install the x402-tron Python package:
+Install the x402-tron Python package:
 
-    ```bash
-    pip install x402-tron
-    ```
+```bash
+pip install x402-tron
+```
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
-    Install the x402-tron TypeScript package:
+Install the x402-tron TypeScript package:
 
-    ```bash
-    npm install @open-aibank/x402-tron tronweb
-    ```
+```bash
+npm install @open-aibank/x402-tron tronweb
+```
   </TabItem>
 </Tabs>
 
@@ -82,9 +82,9 @@ console.log(`Client Address: ${signer.getAddress()}`);
 
 <Tabs>
   <TabItem value="python" label="Python (httpx)">
-    **x402-tron** provides async HTTP client support with automatic 402 payment handling.
+**x402-tron** provides async HTTP client support with automatic 402 payment handling.
 
-    [Full example here](https://github.com/open-aibank/x402-tron-demo/tree/main/python/client)
+[Full example here](https://github.com/open-aibank/x402-tron-demo/tree/main/python/client)
 
 ```python
 import asyncio
@@ -134,7 +134,7 @@ asyncio.run(main())
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
-    [Full example here](https://github.com/open-aibank/x402-tron-demo/tree/main/typescript/client)
+[Full example here](https://github.com/open-aibank/x402-tron-demo/tree/main/typescript/client)
 
 ```typescript
 import { TronWeb } from 'tronweb';

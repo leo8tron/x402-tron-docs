@@ -7,11 +7,6 @@ const sidebars = {
       label: 'Introduction',
     },
     {
-      type: 'doc',
-      id: 'faq',
-      label: 'FAQ',
-    },
-    {
       type: 'category',
       label: 'Getting Started',
       items: [
@@ -36,9 +31,9 @@ const sidebars = {
       label: 'SDK Features',
     },
     {
-      type: 'link',
-      label: 'GitHub',
-      href: 'https://github.com/open-aibank/x402-tron',
+      type: 'doc',
+      id: 'faq',
+      label: 'FAQ',
     },
   ],
 }
