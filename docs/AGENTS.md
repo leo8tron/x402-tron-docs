@@ -6,7 +6,7 @@
 
 ## Directory Structure
 - `docs/core-concepts/` — Protocol explanations (HTTP 402, client-server, facilitator, wallet, network support)
-- `docs/getting-started/` — Quickstart guides for buyers and sellers (MDX files with tabs)
+- `docs/getting-started/` — Quickstart guides for buyers and sellers (MD files with tabs)
 - `docs/introduction.md` — Welcome/landing page
 - `docs/faq.md` — Frequently asked questions
 - `sidebars.js` — Docusaurus sidebar navigation configuration
@@ -25,7 +25,7 @@
 - Include error handling in all API examples
 - Write for developers with 2-5 years experience
 - Use Docusaurus MDX components (`<Tabs>`, `<TabItem>`) for multi-language code examples
-- Import Tabs at top of MDX files: `import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';`
+- Import Tabs at top of files using them: `import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';`
 - Show both success and error response examples for API endpoints
 - Use real-world parameter values in examples (not foo/bar placeholders)
 
@@ -50,18 +50,18 @@
 - `sidebars.js` — Navigation configuration (MUST update when adding pages)
 - `docusaurus.config.js` — Main site configuration
 - `docs/core-concepts/*.md` — Conceptual documentation
-- `docs/getting-started/*.mdx` — Quickstart guides (MDX for tab components)
+- `docs/getting-started/*.md` — Quickstart guides (MDX for tab components)
 - `docs/sdk-features.md` — Update when SDK capabilities change
 
 ## File Extensions
-- Use `.md` for standard markdown pages
-- Use `.mdx` for pages with React components (Tabs, etc.)
+- Use `.md` for all pages (Docusaurus parses MDX in standard `.md` files)
+- Avoid using `.mdx` extension for better editor compatibility
 
 ## Common Gotchas
 - `sidebars.js` controls Docusaurus navigation; pages not listed won't appear in sidebar
 - Links between pages should omit file extensions
 - TRON addresses are case-sensitive and base58-encoded
-- MDX files must import Tabs components before using them
+- Files with tabs must import Tabs components before using them
 
 ## Pre-PR Checks
 - All links work (no broken references)
