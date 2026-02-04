@@ -52,9 +52,9 @@ At a high level, the flow is simple:
 
 For more detail, see:
 
-* [Client / Server](/docs/core-concepts/client-server)
-* [Facilitator](/docs/core-concepts/facilitator)
-* [HTTP 402](/docs/core-concepts/http-402)
+* [Client / Server](core-concepts/client-server)
+* [Facilitator](core-concepts/facilitator)
+* [HTTP 402](core-concepts/http-402)
 
 The goal is to make programmatic commerce accessible, permissionless, and developer-friendly on TRON blockchain.
 
@@ -70,6 +70,6 @@ x402-tron supports the following TRON networks:
 
 Ready to build? Start here:
 
-* [Quickstart for Sellers](/docs/getting-started/quickstart-for-sellers)
-* [Quickstart for Buyers](/docs/getting-started/quickstart-for-buyers)
-* [Explore Core Concepts](/docs/core-concepts/http-402)
+* [Quickstart for Sellers](getting-started/quickstart-for-sellers)
+* [Quickstart for Buyers](getting-started/quickstart-for-buyers)
+* [Explore Core Concepts](core-concepts/http-402)
