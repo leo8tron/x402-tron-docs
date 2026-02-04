@@ -1,0 +1,46 @@
+/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
+const sidebars = {
+  docsSidebar: [
+    {
+      type: 'doc',
+      id: 'introduction',
+      label: 'Introduction',
+    },
+    {
+      type: 'doc',
+      id: 'faq',
+      label: 'FAQ',
+    },
+    {
+      type: 'category',
+      label: 'Getting Started',
+      items: [
+        'getting-started/quickstart-for-buyers',
+        'getting-started/quickstart-for-sellers',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Core Concepts',
+      items: [
+        'core-concepts/http-402',
+        'core-concepts/client-server',
+        'core-concepts/facilitator',
+        'core-concepts/wallet',
+        'core-concepts/network-and-token-support',
+      ],
+    },
+    {
+      type: 'doc',
+      id: 'sdk-features',
+      label: 'SDK Features',
+    },
+    {
+      type: 'link',
+      label: 'GitHub',
+      href: 'https://github.com/open-aibank/x402-tron',
+    },
+  ],
+}
+
+module.exports = sidebars
