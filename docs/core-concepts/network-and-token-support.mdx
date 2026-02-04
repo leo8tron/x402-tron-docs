@@ -3,6 +3,9 @@ title: "Networks & Token Support"
 description: "This page explains which blockchain networks and tokens are supported by x402-tron, and how to extend support to additional networks."
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## TRON Network Identifiers
 
 x402-tron uses a simple network identifier format: `tron:<network_name>` where network_name is one of `mainnet`, `shasta`, or `nile`.
@@ -59,47 +62,51 @@ When configuring payment requirements, you specify:
 #### Example Configuration
 
 <Tabs>
-  <Tab title="Python (FastAPI)">
-    ```python
-    from x402.server import X402Server
-    from x402.fastapi import x402_protected
-    from x402.config import NetworkConfig
+  <TabItem value="python" label="Python (FastAPI)">
 
-    server = X402Server()
+```python
+from x402.server import X402Server
+from x402.fastapi import x402_protected
+from x402.config import NetworkConfig
 
-    @app.get("/protected")
-    @x402_protected(
-        server=server,
-        price="1 USDT",  # 1 USDT = 1000000 (6 decimals)
-        network=NetworkConfig.TRON_NILE,
-        pay_to="TDhj8uX7SVJwvhCUrMaiQHqPgrB6wRb3eG",
-    )
-    async def protected_endpoint():
-        return {"data": "secret content"}
-    ```
-  </Tab>
-  <Tab title="TypeScript">
-    ```typescript
-    import { X402Client, UptoTronClientMechanism, TronClientSigner } from '@open-aibank/x402-tron';
-    import { TronWeb } from 'tronweb';
+server = X402Server()
 
-    const tronWeb = new TronWeb({
-      fullHost: 'https://nile.trongrid.io',
-      privateKey: 'your-private-key',
-    });
+@app.get("/protected")
+@x402_protected(
+    server=server,
+    price="1 USDT",  # 1 USDT = 1000000 (6 decimals)
+    network=NetworkConfig.TRON_NILE,
+    pay_to="TDhj8uX7SVJwvhCUrMaiQHqPgrB6wRb3eG",
+)
+async def protected_endpoint():
+    return {"data": "secret content"}
+```
 
-    const signer = TronClientSigner.withPrivateKey(
-      tronWeb,
-      'your-private-key', 
-      'nile'
-    );
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
 
-    const client = new X402Client().register(
-      'tron:*',
-      new UptoTronClientMechanism(signer)
-    );
-    ```
-  </Tab>
+```typescript
+import { X402Client, UptoTronClientMechanism, TronClientSigner } from '@open-aibank/x402-tron';
+import { TronWeb } from 'tronweb';
+
+const tronWeb = new TronWeb({
+  fullHost: 'https://nile.trongrid.io',
+  privateKey: 'your-private-key',
+});
+
+const signer = TronClientSigner.withPrivateKey(
+  tronWeb,
+  'your-private-key', 
+  'nile'
+);
+
+const client = new X402Client().register(
+  'tron:*',
+  new UptoTronClientMechanism(signer)
+);
+```
+
+  </TabItem>
 </Tabs>
 
 ### Payment Schemes
@@ -146,21 +153,23 @@ See the [Facilitator](/core-concepts/facilitator) documentation for more details
 To add support for custom TRC-20 tokens:
 
 <Tabs>
-  <Tab title="Python">
-    ```python
-    from x402.tokens import TokenRegistry, TokenInfo
+  <TabItem value="python" label="Python">
 
-    # Register a custom token
-    TokenRegistry.register_token(
-        network="tron:nile",
-        symbol="MYTOKEN",
-        info=TokenInfo(
-            address="TYourTokenContractAddress",
-            decimals=18,
-        )
+```python
+from x402.tokens import TokenRegistry, TokenInfo
+
+# Register a custom token
+TokenRegistry.register_token(
+    network="tron:nile",
+    symbol="MYTOKEN",
+    info=TokenInfo(
+        address="TYourTokenContractAddress",
+        decimals=18,
     )
-    ```
-  </Tab>
+)
+```
+
+  </TabItem>
 </Tabs>
 
 ### Summary

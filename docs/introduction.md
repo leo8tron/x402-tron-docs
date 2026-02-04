@@ -3,6 +3,7 @@ title: "Welcome to x402-tron"
 description: >-
   This guide will help you understand x402-tron, the open payment standard for TRON blockchain, and help
   you get started building or integrating services with x402-tron.
+slug: /
 ---
 
 x402-tron is the TRON implementation of the x402 open payment standard that enables services to charge for access to their APIs and content directly over HTTP. It is built around the HTTP `402 Payment Required` status code and allows clients to programmatically pay for resources without accounts, sessions, or credential management.

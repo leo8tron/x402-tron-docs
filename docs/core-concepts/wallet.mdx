@@ -3,6 +3,9 @@ title: "Wallet"
 description: "This page explains the role of the **wallet** in the x402-tron protocol."
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 In x402-tron, a TRON wallet is both a payment mechanism and a form of unique identity for buyers and sellers. Wallet addresses are used to send, receive, and verify payments, while also serving as identifiers within the protocol.
 
 ### Role of the Wallet
@@ -35,38 +38,42 @@ TRON uses base58-encoded addresses that start with 'T'. For example:
 ### Creating a Wallet Signer
 
 <Tabs>
-  <Tab title="Python">
-    ```python
-    from x402.signers.client import TronClientSigner
+  <TabItem value="python" label="Python">
 
-    # From private key
-    signer = TronClientSigner.from_private_key(
-        private_key="your-private-key",
-        network="nile"  # or "mainnet", "shasta"
-    )
+```python
+from x402.signers.client import TronClientSigner
 
-    print(f"Address: {signer.get_address()}")
-    ```
-  </Tab>
-  <Tab title="TypeScript">
-    ```typescript
-    import { TronWeb } from 'tronweb';
-    import { TronClientSigner } from '@open-aibank/x402-tron';
+# From private key
+signer = TronClientSigner.from_private_key(
+    private_key="your-private-key",
+    network="nile"  # or "mainnet", "shasta"
+)
 
-    const tronWeb = new TronWeb({
-      fullHost: 'https://nile.trongrid.io',
-      privateKey: 'your-private-key',
-    });
+print(f"Address: {signer.get_address()}")
+```
 
-    const signer = TronClientSigner.withPrivateKey(
-      tronWeb,
-      'your-private-key',
-      'nile'
-    );
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
 
-    console.log(`Address: ${signer.getAddress()}`);
-    ```
-  </Tab>
+```typescript
+import { TronWeb } from 'tronweb';
+import { TronClientSigner } from '@open-aibank/x402-tron';
+
+const tronWeb = new TronWeb({
+  fullHost: 'https://nile.trongrid.io',
+  privateKey: 'your-private-key',
+});
+
+const signer = TronClientSigner.withPrivateKey(
+  tronWeb,
+  'your-private-key',
+  'nile'
+);
+
+console.log(`Address: ${signer.getAddress()}`);
+```
+
+  </TabItem>
 </Tabs>
 
 ### TIP-712 Signing
@@ -90,33 +97,37 @@ For the `upto` payment scheme, clients must approve the facilitator to spend tok
 The x402-tron client SDK handles this automatically, but you can also manage allowances manually:
 
 <Tabs>
-  <Tab title="Python">
-    ```python
-    async def check_my_allowance():
-        # Check if approval is needed
-        allowance = await signer.check_allowance(
-            token_address="TXYZopYRdj2D9XRtbG411XZZ3kM5VkAeBf",
-            required_amount=1000000,
-            network="nile"  # or "mainnet", "shasta"
-        )
+  <TabItem value="python" label="Python">
 
-        if allowance < required_amount:
-            # SDK will auto-approve when needed
-            pass
-    ```
-  </Tab>
-  <Tab title="TypeScript">
-    ```typescript
-    // Check if approval is needed
-    const allowance = await signer.checkAllowance(
-      'TXYZopYRdj2D9XRtbG411XZZ3kM5VkAeBf',
-      BigInt(1000000),
-      'nile'  // or 'mainnet', 'shasta'
-    );
+```python
+async def check_my_allowance():
+    # Check if approval is needed
+    allowance = await signer.check_allowance(
+        token_address="TXYZopYRdj2D9XRtbG411XZZ3kM5VkAeBf",
+        required_amount=1000000,
+        network="nile"  # or "mainnet", "shasta"
+    )
 
-    // SDK will auto-approve when needed
-    ```
-  </Tab>
+    if allowance < required_amount:
+        # SDK will auto-approve when needed
+        pass
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+// Check if approval is needed
+const allowance = await signer.checkAllowance(
+  'TXYZopYRdj2D9XRtbG411XZZ3kM5VkAeBf',
+  BigInt(1000000),
+  'nile'  // or 'mainnet', 'shasta'
+);
+
+// SDK will auto-approve when needed
+```
+
+  </TabItem>
 </Tabs>
 
 ### Network-Specific Endpoints

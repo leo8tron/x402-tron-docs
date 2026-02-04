@@ -3,6 +3,9 @@ title: "Facilitator"
 description: "This page explains the role of the **facilitator** in the x402-tron protocol."
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The facilitator is an optional but recommended service that simplifies the process of verifying and settling payments between clients (buyers) and servers (sellers) on TRON blockchain.
 
 ### What is a Facilitator?
@@ -82,25 +85,27 @@ The facilitator requires:
 ### Facilitator Configuration
 
 <Tabs>
-  <Tab title="Python">
-    ```python
-    from x402.mechanisms.facilitator import UptoTronFacilitatorMechanism
-    from x402.signers.facilitator import TronFacilitatorSigner
+  <TabItem value="python" label="Python">
 
-    # Initialize facilitator signer
-    facilitator_signer = TronFacilitatorSigner.from_private_key(
-        "your-private-key",
-        network="nile",  # or "mainnet"
-    )
+```python
+from x402.mechanisms.facilitator import UptoTronFacilitatorMechanism
+from x402.signers.facilitator import TronFacilitatorSigner
 
-    # Initialize facilitator mechanism
-    facilitator_mechanism = UptoTronFacilitatorMechanism(
-        facilitator_signer,
-        fee_to=facilitator_signer.get_address(),
-        base_fee=1_000_000,  # 1 USDT fee
-    )
-    ```
-  </Tab>
+# Initialize facilitator signer
+facilitator_signer = TronFacilitatorSigner.from_private_key(
+    "your-private-key",
+    network="nile",  # or "mainnet"
+)
+
+# Initialize facilitator mechanism
+facilitator_mechanism = UptoTronFacilitatorMechanism(
+    facilitator_signer,
+    fee_to=facilitator_signer.get_address(),
+    base_fee=1_000_000,  # 1 USDT fee
+)
+```
+
+  </TabItem>
 </Tabs>
 
 ### Fee Structure

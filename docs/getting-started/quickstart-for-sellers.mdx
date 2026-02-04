@@ -3,6 +3,9 @@ title: "Quickstart for Sellers"
 description: "This guide walks you through integrating with **x402-tron** to enable payments for your API or service on TRON blockchain. By the end, your API will be able to charge buyers and AI agents for access."
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 **Note:** This quickstart begins with testnet configuration (TRON Nile) for safe testing. When you're ready for production, see [Running on Mainnet](#running-on-mainnet) for the simple changes needed to accept real payments on TRON mainnet.
 
 ### Prerequisites
@@ -17,20 +20,20 @@ Before you begin, ensure you have:
 ### 1. Install Dependencies
 
 <Tabs>
-  <Tab title="Python (FastAPI)">
+  <TabItem value="python" label="Python (FastAPI)">
     Install the x402-tron Python package with FastAPI support:
 
     ```bash
     pip install x402-tron[fastapi]
     ```
-  </Tab>
-  <Tab title="TypeScript">
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
     Install the x402-tron TypeScript package:
 
     ```bash
     npm install @open-aibank/x402-tron tronweb
     ```
-  </Tab>
+  </TabItem>
 </Tabs>
 
 ### 2. Add Payment Middleware
@@ -42,46 +45,47 @@ Integrate the payment middleware into your application. You will need to provide
 * Your TRON receiving wallet address.
 
 <Tabs>
-  <Tab title="Python (FastAPI)">
+  <TabItem value="python" label="Python (FastAPI)">
     Full example in the demo repo [here](https://github.com/open-aibank/x402-tron-demo/tree/main/python/server).
 
-    ```python
-    import os
-    from fastapi import FastAPI
-    from x402.server import X402Server
-    from x402.fastapi import x402_protected
-    from x402.facilitator import FacilitatorClient
-    from x402.config import NetworkConfig
+```python
+import os
+from fastapi import FastAPI
+from x402.server import X402Server
+from x402.fastapi import x402_protected
+from x402.facilitator import FacilitatorClient
+from x402.config import NetworkConfig
 
-    app = FastAPI()
+app = FastAPI()
 
-    # Your TRON receiving wallet address
-    PAY_TO_ADDRESS = "TDhj8uX7SVJwvhCUrMaiQHqPgrB6wRb3eG"
-    
-    # Facilitator URL (run locally or use hosted)
-    FACILITATOR_URL = "http://localhost:8001"
+# Your TRON receiving wallet address
+PAY_TO_ADDRESS = "TDhj8uX7SVJwvhCUrMaiQHqPgrB6wRb3eG"
 
-    # Initialize x402 server (TRON mechanisms auto-registered)
-    server = X402Server()
-    facilitator = FacilitatorClient(base_url=FACILITATOR_URL)
-    server.add_facilitator(facilitator)
+# Facilitator URL (run locally or use hosted)
+FACILITATOR_URL = "http://localhost:8001"
 
-    @app.get("/protected")
-    @x402_protected(
-        server=server,
-        price="1 USDT",  # 1 USDT = 1000000 (6 decimals)
-        network=NetworkConfig.TRON_NILE,
-        pay_to=PAY_TO_ADDRESS,
-    )
-    async def protected_endpoint():
-        return {"data": "secret content"}
+# Initialize x402 server (TRON mechanisms auto-registered)
+server = X402Server()
+facilitator = FacilitatorClient(base_url=FACILITATOR_URL)
+server.add_facilitator(facilitator)
+
+@app.get("/protected")
+@x402_protected(
+    server=server,
+    price="1 USDT",  # 1 USDT = 1000000 (6 decimals)
+    network=NetworkConfig.TRON_NILE,
+    pay_to=PAY_TO_ADDRESS,
+)
+async def protected_endpoint():
+    return {"data": "secret content"}
 
 
-    if __name__ == "__main__":
-        import uvicorn
-        uvicorn.run(app, host="0.0.0.0", port=8000)
-    ```
-  </Tab>
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+```
+
+  </TabItem>
 </Tabs>
 
 **Route Configuration:**
@@ -144,14 +148,16 @@ Once you've tested your integration on testnet (Nile), you're ready to accept re
 Change from testnet to mainnet:
 
 <Tabs>
-  <Tab title="Python">
-    ```python
-    from x402.config import NetworkConfig
+  <TabItem value="python" label="Python">
 
-    # Testnet → Mainnet
-    network=NetworkConfig.TRON_MAINNET  # was TRON_NILE
-    ```
-  </Tab>
+```python
+from x402.config import NetworkConfig
+
+# Testnet → Mainnet
+network=NetworkConfig.TRON_MAINNET  # was TRON_NILE
+```
+
+  </TabItem>
 </Tabs>
 
 ### 2. Update Your Facilitator
