@@ -35,7 +35,9 @@ Both languages support client, server, and facilitator implementations.
 
 #### Who runs facilitators?
 
-You run your own facilitator. x402-tron is designed to be self-hosted. The facilitator included in the repository is ready to run.
+You typically run your own facilitator. x402-tron is designed to be self-hosted. The facilitator included in the repository is ready to run.
+
+An official hosted facilitator service is also **coming soon**, which will allow you to use x402-tron without deploying your own facilitator infrastructure.
 
 #### What stops a malicious facilitator from stealing funds or lying about settlement?
 
